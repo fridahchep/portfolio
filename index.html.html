@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fridah Chepkoech | Content & Communications Portfolio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a2e;
+    --forest: #1a5c38;
+    --moss: #2e8b57;
+    --sage: #e8f5ee;
+    --sand: #f7f4ef;
+    --mist: #f0ede8;
+    --mid: #6b7280;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--sand);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(247,244,239,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #e0dbd3;
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--forest);
+    letter-spacing: 0.01em;
+  }
+  .nav-links { display: flex; gap: 1.8rem; }
+  .nav-links a {
+    font-size: 0.85rem; font-weight: 500; color: var(--mid);
+    text-decoration: none; letter-spacing: 0.03em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--forest); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    background: var(--ink);
+    padding: 7rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 50%; height: 100%;
+    background: linear-gradient(135deg, var(--forest) 0%, #0d3320 100%);
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto; width: 100%;
+    position: relative; z-index: 2;
+  }
+  .hero-eyebrow {
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--moss);
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    max-width: 700px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: #a8d5b8;
+  }
+  .hero-sub {
+    font-size: 1.1rem; color: #a0aab4;
+    max-width: 520px; line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.5rem; }
+  .hero-tag {
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.05em;
+    padding: 0.35rem 0.9rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 100px;
+    color: rgba(255,255,255,0.7);
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--moss); color: var(--white);
+    padding: 0.8rem 1.8rem; border-radius: 6px;
+    text-decoration: none; font-weight: 600; font-size: 0.9rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .hero-cta:hover { background: var(--forest); transform: translateY(-1px); }
+
+  /* SECTIONS */
+  section { padding: 5rem 2rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--moss);
+    margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--ink); line-height: 1.15;
+    margin-bottom: 3rem;
+  }
+
+  /* ABOUT */
+  .about-bg { background: var(--white); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: start;
+  }
+  .about-text p { color: #444; line-height: 1.8; margin-bottom: 1rem; font-size: 1.02rem; }
+  .about-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+  }
+  .stat-card {
+    background: var(--sage); border-radius: 10px; padding: 1.5rem;
+    border-left: 3px solid var(--moss);
+  }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem; color: var(--forest); line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-label { font-size: 0.82rem; color: var(--mid); font-weight: 500; }
+
+  /* WRITING SAMPLES */
+  .writing-bg { background: var(--mist); }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+  .article-card {
+    background: var(--white); border-radius: 12px;
+    padding: 1.8rem; border: 1px solid #e5e0d8;
+    display: flex; flex-direction: column;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .article-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); transform: translateY(-2px); }
+  .article-pub {
+    font-size: 0.73rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--moss);
+    margin-bottom: 0.7rem;
+  }
+  .article-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem; color: var(--ink); line-height: 1.35;
+    margin-bottom: 0.8rem;
+  }
+  .article-desc { font-size: 0.88rem; color: var(--mid); line-height: 1.65; flex: 1; }
+  .article-tag {
+    display: inline-block; margin-top: 1rem;
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 0.25rem 0.7rem;
+    background: var(--sage); color: var(--forest);
+    border-radius: 100px;
+  }
+  .article-link {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    margin-top: 1rem; font-size: 0.82rem; font-weight: 600;
+    color: var(--moss); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .article-link:hover { color: var(--forest); }
+
+  /* COVERAGE */
+  .coverage-bg { background: var(--white); }
+  .coverage-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+  }
+  .coverage-card {
+    background: var(--sage); border-radius: 10px; padding: 1.5rem;
+    display: flex; flex-direction: column; gap: 0.5rem;
+  }
+  .coverage-icon { font-size: 1.6rem; }
+  .coverage-title { font-weight: 700; color: var(--forest); font-size: 0.95rem; }
+  .coverage-desc { font-size: 0.84rem; color: #555; line-height: 1.55; }
+
+  /* EXPERIENCE */
+  .exp-bg { background: var(--mist); }
+  .exp-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .exp-card {
+    background: var(--white); border-radius: 10px;
+    padding: 1.5rem 1.8rem;
+    border-left: 4px solid var(--moss);
+    display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start;
+  }
+  .exp-role { font-weight: 700; color: var(--ink); font-size: 1rem; margin-bottom: 0.2rem; }
+  .exp-org { font-size: 0.9rem; color: var(--moss); font-weight: 500; margin-bottom: 0.5rem; }
+  .exp-desc { font-size: 0.87rem; color: #555; line-height: 1.6; }
+  .exp-date {
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.05em;
+    color: var(--mid); white-space: nowrap;
+    text-align: right;
+  }
+
+  /* SKILLS */
+  .skills-bg { background: var(--ink); }
+  .skills-bg .section-title { color: var(--white); }
+  .skills-bg .section-label { color: #a8d5b8; }
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+  }
+  .skill-group {
+    background: rgba(255,255,255,0.06); border-radius: 10px;
+    padding: 1.4rem; border: 1px solid rgba(255,255,255,0.1);
+  }
+  .skill-group-title {
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--moss);
+    margin-bottom: 0.8rem;
+  }
+  .skill-list { list-style: none; }
+  .skill-list li {
+    font-size: 0.88rem; color: rgba(255,255,255,0.75);
+    padding: 0.25rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .skill-list li:last-child { border-bottom: none; }
+
+  /* CONTACT */
+  .contact-bg { background: var(--forest); }
+  .contact-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+  .contact-bg .section-label { color: #a8d5b8; }
+  .contact-bg .section-title { color: var(--white); margin-bottom: 1rem; }
+  .contact-sub { color: rgba(255,255,255,0.7); margin-bottom: 2.5rem; font-size: 1.05rem; }
+  .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.6rem; border-radius: 6px;
+    font-weight: 600; font-size: 0.9rem;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .contact-link.primary {
+    background: var(--white); color: var(--forest);
+  }
+  .contact-link.primary:hover { background: var(--sage); }
+  .contact-link.secondary {
+    background: rgba(255,255,255,0.15); color: var(--white);
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .contact-link.secondary:hover { background: rgba(255,255,255,0.25); }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink); color: rgba(255,255,255,0.4);
+    text-align: center; padding: 1.5rem;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .exp-card { grid-template-columns: 1fr; }
+    .exp-date { text-align: left; }
+    .hero::before { width: 100%; clip-path: none; opacity: 0.3; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-name">Fridah Chepkoech</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#writing">Writing</a>
+    <a href="#coverage">Coverage</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Content & Communications Portfolio</p>
+    <h1>Stories that <em>move</em><br>people to act.</h1>
+    <p class="hero-sub">Science communicator, editor, and content strategist based in Nairobi, Kenya. Six years turning complex ideas into content that informs, engages, and drives results across Africa and beyond.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">SEO Content</span>
+      <span class="hero-tag">Environmental Journalism</span>
+      <span class="hero-tag">Startup Storytelling</span>
+      <span class="hero-tag">Editorial Strategy</span>
+      <span class="hero-tag">Content Distribution</span>
+      <span class="hero-tag">Policy Analysis</span>
+    </div>
+    <a href="#writing" class="hero-cta">View My Work &darr;</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-bg" id="about">
+  <div class="section-inner">
+    <p class="section-label">About</p>
+    <h2 class="section-title">Researcher, editor,<br>and distribution strategist.</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I am a science communicator and content strategist with over six years of experience producing editorial content across agrifood systems, environmental policy, sustainability, and startup storytelling. My work spans long-form investigative features, SEO blogs, founder content, newsletter writing, and multilateral event coverage.</p>
+        <p>I have covered the UN Environment Assembly (UNEA-7) and the African Ministerial Conference on the Environment (AMCEN 20) as a credentialed journalist, and edited across five industry publications at FW Brands MEA simultaneously. As founder of FreshGuard Technologies, I also know what it means to build a content presence from zero.</p>
+        <p>I write clearly, distribute intentionally, and iterate quickly based on what actually drives results.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-num">6+</div>
+          <div class="stat-label">Years in content & editorial</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">5</div>
+          <div class="stat-label">Industry publications edited simultaneously</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">2</div>
+          <div class="stat-label">UN/Ministerial events covered as credentialed press</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Startups supported with content strategy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WRITING SAMPLES -->
+<section class="writing-bg" id="writing">
+  <div class="section-inner">
+    <p class="section-label">Published Work</p>
+    <h2 class="section-title">Selected writing samples.</h2>
+    <div class="articles-grid">
+
+      <div class="article-card">
+        <div class="article-pub">Food Business MEA &mdash; Issue 4, 2025</div>
+        <div class="article-title">Loop Pet Food: How a Kenyan Startup is Pioneering Sustainable Insect-Powered Pet Nutrition</div>
+        <div class="article-desc">Original on-site reporting combined with market-sizing data from UN Comtrade and Euromonitor. Covers circular food systems, insect protein economics, and Africa's $2.94B pet food market. A research-driven business feature with founder interviews.</div>
+        <span class="article-tag">Circular Economy &bull; Agrifood &bull; Startup</span>
+        <a href="https://issuu.com/foodworldmedia/docs/feed_business_middle_east_africa_magazine_-_issu/20" target="_blank" class="article-link">Read article &rarr;</a>
+      </div>
+
+      <div class="article-card">
+        <div class="article-pub">Sustainable Packaging MEA &mdash; Issue 10, 2025</div>
+        <div class="article-title">Kenya's Hidden Recyclers: Why Informal Waste Pickers Deserve a Seat at the Circular Economy Table</div>
+        <div class="article-desc">Policy analysis of Kenya's Extended Producer Responsibility (EPR) framework combined with ground-level expert interviews from Kenya Plastics Pact, YouthPrinua, and Whispers Champions Youth Initiative. Draws on World Bank and NEMA primary data.</div>
+        <span class="article-tag">Policy &bull; Circular Economy &bull; Social Impact</span>
+        <a href="https://issuu.com/foodworldmedia/docs/sustainable_packaging_mea_issue_10/46" target="_blank" class="article-link">Read article &rarr;</a>
+      </div>
+
+      <div class="article-card">
+        <div class="article-pub">HORECA MEA &mdash; Issue 16, July&ndash;Sept 2025</div>
+        <div class="article-title">Urban Form, Health Outcomes: Why African Cities Must Be Designed for Wellbeing</div>
+        <div class="article-desc">Cross-regional policy feature examining biodiversity-linked urban planning across Nairobi, Kigali, Addis Ababa, and Accra. Combines expert interviews with climate-health specialists and urban architects, WHO data, and case studies from the Accra Urban Health Initiative.</div>
+        <span class="article-tag">Urban Policy &bull; Biodiversity &bull; Public Health</span>
+        <a href="https://issuu.com/foodworldmedia/docs/hcmea_issue_16_july_sept_2025/44" target="_blank" class="article-link">Read article &rarr;</a>
+      </div>
+
+      <div class="article-card">
+        <div class="article-pub">AgriTech MEA &mdash; 2025</div>
+        <div class="article-title">Accelerating Adoption: UoN Leads Successful Farmer Training Workshop to Cut Post-Harvest Losses</div>
+        <div class="article-desc">Impact feature on the University of Nairobi &ndash; FreshGuard Technologies training workshop. Documents the translation of cold chain innovation into practical farmer knowledge. A product moment turned into national media coverage.</div>
+        <span class="article-tag">AgriTech &bull; Post-Harvest &bull; Startup</span>
+        <a href="https://www.agritechmea.com/accelerating-adoption-uon-leads-successful-farmer-training-workshop-to-cut-post-harvest-losses/" target="_blank" class="article-link">Read article &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EVENT COVERAGE -->
+<section class="coverage-bg" id="coverage">
+  <div class="section-inner">
+    <p class="section-label">Event & Policy Coverage</p>
+    <h2 class="section-title">High-level reporting credentials.</h2>
+    <div class="coverage-grid">
+      <div class="coverage-card">
+        <div class="coverage-icon">🌍</div>
+        <div class="coverage-title">UNEA-7, Nairobi (2025)</div>
+        <div class="coverage-desc">Credentialed UNEA Press Hub member covering the UN Environment Assembly, the world's highest-level environmental decision-making body. Reported on biodiversity, pollution, and climate frameworks.</div>
+      </div>
+      <div class="coverage-card">
+        <div class="coverage-icon">🏛️</div>
+        <div class="coverage-title">AMCEN 20, Nairobi (2025)</div>
+        <div class="coverage-desc">Head of Delegation, FW Africa. Covered the African Ministerial Conference on the Environment, engaging with ministers and policymakers on biodiversity, ecosystem governance, and climate commitments.</div>
+      </div>
+      <div class="coverage-card">
+        <div class="coverage-icon">🌾</div>
+        <div class="coverage-title">AFMASS Food Expo (2023&ndash;2025)</div>
+        <div class="coverage-desc">Conference Manager for one of Africa's leading food industry events. Managed speaker coordination, event communications, and post-event content and reporting.</div>
+      </div>
+      <div class="coverage-card">
+        <div class="coverage-icon">🎙️</div>
+        <div class="coverage-title">CEO Voices Podcast (2026)</div>
+        <div class="coverage-desc">Head of Outreach. Built the guest outreach system (invitation letters, LinkedIn messages, follow-ups and confirmations) and helped secure the guests for the current season. Episode 1 is published.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="exp-bg" id="experience">
+  <div class="section-inner">
+    <p class="section-label">Experience</p>
+    <h2 class="section-title">Where I have worked.</h2>
+    <div class="exp-list">
+      <div class="exp-card">
+        <div>
+          <div class="exp-role">Founder</div>
+          <div class="exp-org">FreshGuard Technologies</div>
+          <div class="exp-desc">Own all content strategy, storytelling, and brand communications for an early-stage cold chain startup. Built content presence from zero, earning national media coverage in Agritech MEA.</div>
+        </div>
+        <div class="exp-date">Feb 2025&ndash;Present</div>
+      </div>
+      <div class="exp-card">
+        <div>
+          <div class="exp-role">Head of Outreach, CEO Voices Podcast</div>
+          <div class="exp-org">FW Studios (FW Brands MEA)</div>
+          <div class="exp-desc">Built the guest outreach system for executive interviews: formal invitation letters, LinkedIn messages, follow-ups and confirmation workflows. Targeted food and beverage manufacturing and milling and feed companies across East Africa, and helped secure the guests for the current season. Episode 1 is published.</div>
+        </div>
+        <div class="exp-date">2026</div>
+      </div>
+      <div class="exp-card">
+        <div>
+          <div class="exp-role">Editor, promoted to Editorial Lead (Feb 2026)</div>
+          <div class="exp-org">FW Brands MEA (AgriTech MEA, Food Business MEA, Milling MEA, Sustainable Packaging MEA, HORECA MEA)</div>
+          <div class="exp-desc">Managed editorial strategy and content production across five concurrent industry publications covering Africa and the Middle East. Wrote, edited, and published SEO-optimized long-form features and reports.</div>
+        </div>
+        <div class="exp-date">Sept 2023&ndash;Sept 2026</div>
+      </div>
+      <div class="exp-card">
+        <div>
+          <div class="exp-role">Storyteller / Fellow (volunteer)</div>
+          <div class="exp-org">beVisioneers: The Mercedes-Benz Fellowship, Nairobi Westlands Hub</div>
+          <div class="exp-desc">Collaborate daily alongside startup founders, translating innovation journeys into LinkedIn posts, digital narratives, and storytelling campaigns. Produce and edit most of the hub's short videos in CapCut and Canva, and facilitate storytelling workshops for founders.</div>
+        </div>
+        <div class="exp-date">2025&ndash;2026</div>
+      </div>
+      <div class="exp-card">
+        <div>
+          <div class="exp-role">Head of Business Development</div>
+          <div class="exp-org">Kilimogram (Online Marketplace for Produce)</div>
+          <div class="exp-desc">Led content, growth communications, and stakeholder engagement strategy for a digital agritech marketplace across 2.5 years.</div>
+        </div>
+        <div class="exp-date">Jan 2021&ndash;Sept 2023</div>
+      </div>
+      <div class="exp-card">
+        <div>
+          <div class="exp-role">Freelance Science Communicator & Writer</div>
+          <div class="exp-org">Self-Employed</div>
+          <div class="exp-desc">Produce SEO-optimized, research-backed long-form content across science, sustainability, health, and agribusiness niches. Regular use of AI tools in research and drafting workflows.</div>
+        </div>
+        <div class="exp-date">2019&ndash;Present</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-bg">
+  <div class="section-inner">
+    <p class="section-label">Skills & Tools</p>
+    <h2 class="section-title">What I bring to the table.</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title">Content Creation</div>
+        <ul class="skill-list">
+          <li>SEO blog writing & optimization</li>
+          <li>Long-form investigative features</li>
+          <li>LinkedIn & Twitter/X content</li>
+          <li>Newsletter writing</li>
+          <li>Short-form video scripting and editing (CapCut, Canva)</li>
+          <li>AI-assisted content workflows</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Distribution & Growth</div>
+        <ul class="skill-list">
+          <li>Content calendar management</li>
+          <li>Multi-platform distribution</li>
+          <li>Community engagement</li>
+          <li>Guest outreach and follow-up workflows</li>
+          <li>Performance tracking</li>
+          <li>Content repurposing</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Editorial</div>
+        <ul class="skill-list">
+          <li>Copy editing (British English)</li>
+          <li>Multi-author coordination</li>
+          <li>House style compliance</li>
+          <li>Policy & research analysis</li>
+          <li>Expert interview sourcing</li>
+          <li>Fact-checking & verification</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Tools & Platforms</div>
+        <ul class="skill-list">
+          <li>WordPress & CMS platforms</li>
+          <li>Canva & visual content</li>
+          <li>Google Analytics & Search Console</li>
+          <li>CRM systems</li>
+          <li>ChatGPT & Perplexity</li>
+          <li>Google Suite & SPSS</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-bg" id="contact">
+  <div class="contact-inner">
+    <p class="section-label">Get in Touch</p>
+    <h2 class="section-title">Let's work together.</h2>
+    <p class="contact-sub">Available for freelance content, editorial, and growth marketing projects. Based in Nairobi, Kenya &mdash; working remotely across all time zones.</p>
+    <div class="contact-links">
+      <a href="mailto:fchepkoech23@gmail.com" class="contact-link primary">&#9993; fchepkoech23@gmail.com</a>
+      <a href="https://www.linkedin.com/in/fridah-chepkoech/" target="_blank" class="contact-link secondary">LinkedIn Profile &rarr;</a>
+      <a href="tel:+254715850544" class="contact-link secondary">+254 715 850 544</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Fridah Chepkoech Kiprotich &mdash; Nairobi, Kenya
+</footer>
+
+</body>
+</html>
